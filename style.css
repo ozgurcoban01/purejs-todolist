@@ -69,3 +69,34 @@ justify-content: center;
     height: 100%;
     background-color: rgb(185, 185, 185);
 }
+
+.finished-todos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.finished-todo{
+    width: 100%;
+    height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.finished-todo-content{
+    width: 70%;
+    height: 100%;
+    background-color: blue;
+}
+.finished-todo-adjust{
+    width: 15%;
+    height: 100%;
+    background-color: rgb(156, 0, 0);
+}
+
+.finished-todo-delete{
+    width: 15%;
+    height: 100%;
+    background-color: rgb(185, 185, 185);
+}
+
