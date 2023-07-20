@@ -1,50 +1,89 @@
-const todoInput=document.querySelector(".added-todo").querySelector("input")
-const todoAddButton=document.querySelector(".added-confirm")
-const waitingTodos=document.querySelector("todos")
-const finishedTodos=document.querySelector("finished-todos")
+const todoInput = document.querySelector(".added-todo").querySelector("input");
+const todoAddButton = document.querySelector(".added-confirm");
+const waitingTodos = document.querySelector(".todos");
+const finishedTodos = document.querySelector(".finished-todos");
 
-todoAddButton.addEventListener("click",newTodoAdd)
+todoAddButton.addEventListener("click", newTodoAdd);
 
-if(localStorage.getItem("todo")==null){
-    localStorage.setItem("todoId",0);
+let todos = undefined;
+
+if (localStorage.getItem("todos") == null) {
+  localStorage.setItem("todosId", 0);
 }
 
-let todos=[]
-
-if(localStorage.getItem("todoId")>0){
-    todos=JSON.parse(localStorage.getItem("todos"))
+if (localStorage.getItem("todosId") == 0) {
+  todos = [];
+} else {
+  todos = JSON.parse(localStorage.getItem("todos"));
+  orderTodos();
 }
 
-console.log("----")
-console.log(JSON.parse(localStorage.getItem("todos")))
-console.log("----")
+function orderTodos() {
+  waitingTodos.innerHTML = "";
+  finishedTodos.innerHTML = "";
+  todos.forEach((todo) => {
+    if (todo.finished == true) {
+      
+      const newTodo = document.createElement("div");
+      newTodo.classList.add("finished-todo");
 
-todos.forEach(todo => {
-    waitingTodos.appendChild(`
-        <div class="todo">
-          <div class="todo-content">${todo.todo}</div>
-          <div class="todo-adjust"></div>
-          <div class="todo-delete"></div>
-        </div>
-    `)
-});
+      const newTodoContent = document.createElement("div");
+      newTodoContent.classList.add("finished-todo-content");
+      newTodoContent.innerText = todo.todo;
 
-function newTodoAdd(){
-    localStorage.setItem("todoId",localStorage.getItem("todoId")+1)
+      const newTodoAdjust = document.createElement("div");
+      newTodoAdjust.classList.add("finished-todo-adjust");
+      newTodoAdjust.setAttribute("todoId", todo.todoId);
 
-    todos.unshift({
-        todo:todoInput.value,
-        finished:false,
-        todoId:localStorage.getItem("todoId")
-    })
+      const newTodoDelete = document.createElement("div");
+      newTodoDelete.classList.add("finished-todo-delete");
+      newTodoDelete.setAttribute("todoId", todo.todoId);
 
-    localStorage.setItem("todos", JSON.stringify(todos))
-    todoInput.value=""
-    
-    todos=JSON.parse(localStorage.getItem("todos"));
-    console.log("----")
-    console.log(JSON.parse(localStorage.getItem("todos")))
-    console.log("----")
+      newTodo.appendChild(newTodoContent);
+      newTodo.appendChild(newTodoAdjust);
+      newTodo.appendChild(newTodoDelete);
 
+      finishedTodos.appendChild(newTodo);
+    } else {
+
+      const newTodo = document.createElement("div");
+      newTodo.classList.add("todo");
+
+      const newTodoContent = document.createElement("div");
+      newTodoContent.classList.add("todo-content");
+      newTodoContent.innerText = todo.todo;
+
+      const newTodoAdjust = document.createElement("div");
+      newTodoAdjust.classList.add("todo-adjust");
+      newTodoAdjust.setAttribute("todoId", todo.todoId);
+
+      const newTodoDelete = document.createElement("div");
+      newTodoDelete.classList.add("todo-delete");
+      newTodoDelete.setAttribute("todoId", todo.todoId);
+
+      newTodo.appendChild(newTodoContent);
+      newTodo.appendChild(newTodoAdjust);
+      newTodo.appendChild(newTodoDelete);
+
+      waitingTodos.appendChild(newTodo);
+    }
+  });
 }
 
+function newTodoAdd() {
+  localStorage.setItem(
+    "todosId",
+    parseInt(localStorage.getItem("todosId")) + 1
+  );
+
+  todos.unshift({
+    todo: todoInput.value,
+    finished: true,
+    todoId: localStorage.getItem("todosId"),
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todos));
+  todoInput.value = "";
+
+  orderTodos();
+}
