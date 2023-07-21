@@ -3,12 +3,11 @@
   margin: 0;
   box-sizing: border-box;
   background-color: red;
-
 }
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-container {
@@ -22,81 +21,82 @@ body{
   flex-direction: column;
 }
 
-.add-todo{
-    width: 100%;
-    height: 50px;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.add-todo {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.added-todo{
-    width: 70%;
-    height: 100%;
-    background-color: pink;
+.added-todo {
+  width: 70%;
+  height: 100%;
+  background-color: pink;
 }
-.added-confirm{
-    width: 30%;
-    height: 100%;
-    background-color: orange;
+.added-confirm {
+  width: 30%;
+  height: 100%;
+  background-color: orange;
 }
-.todos{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.todos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.todo{
-    width: 100%;
-    height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
+.todo {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.todo-content{
-    width: 70%;
-    height: 100%;
-    background-color: blue;
+.todo-content {
+  width: 70%;
+  height: 100%;
+  background-color: blue;
 }
-.todo-adjust{
-    width: 15%;
-    height: 100%;
-    background-color: rgb(156, 0, 0);
-}
-
-.todo-delete{
-    width: 15%;
-    height: 100%;
-    background-color: rgb(185, 185, 185);
+.todo-adjust {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(156, 0, 0);
+  cursor: pointer;
 }
 
-.finished-todos{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.finished-todo{
-    width: 100%;
-    height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.finished-todo-content{
-    width: 70%;
-    height: 100%;
-    background-color: rgb(0, 255, 132);
-}
-.finished-todo-adjust{
-    width: 15%;
-    height: 100%;
-    background-color: rgb(156, 0, 0);
+.todo-delete {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(185, 185, 185);
+  cursor: pointer;
 }
 
-.finished-todo-delete{
-    width: 15%;
-    height: 100%;
-    background-color: rgb(185, 185, 185);
+.finished-todos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.finished-todo {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.finished-todo-content {
+  width: 70%;
+  height: 100%;
+  background-color: rgb(0, 255, 132);
+}
+.finished-todo-adjust {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(156, 0, 0);
 }
 
+.finished-todo-delete {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(185, 185, 185);
+}
