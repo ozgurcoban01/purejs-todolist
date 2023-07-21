@@ -95,8 +95,9 @@ body {
   background-color: rgb(156, 0, 0);
 }
 
-.finished-todo-delete {
-  width: 15%;
+.finished-todos .todo-delete {
+  width: 30%;
   height: 100%;
   background-color: rgb(185, 185, 185);
+  cursor: pointer;
 }

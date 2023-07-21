@@ -3,6 +3,7 @@ const todoAddButton = document.querySelector(".added-confirm");
 const waitingTodos = document.querySelector(".todos");
 const finishedTodos = document.querySelector(".finished-todos");
 
+
 let newTodos;
 let newTodosFinishedButton;
 let newTodosDeleteButton;
@@ -35,16 +36,12 @@ function orderTodos() {
       newTodoContent.classList.add("finished-todo-content");
       newTodoContent.value = todo.todo;
 
-      const newTodoAdjust = document.createElement("div");
-      newTodoAdjust.classList.add("finished-todo-adjust");
-      newTodoAdjust.setAttribute("todoId", todo.todoId);
-
       const newTodoDelete = document.createElement("div");
-      newTodoDelete.classList.add("finished-todo-delete");
+      newTodoDelete.classList.add("todo-delete");
       newTodoDelete.setAttribute("todoId", todo.todoId);
 
       newTodo.appendChild(newTodoContent);
-      newTodo.appendChild(newTodoAdjust);
+
       newTodo.appendChild(newTodoDelete);
 
       finishedTodos.appendChild(newTodo);
@@ -78,18 +75,39 @@ function orderTodos() {
 
   newTodosFinishedButton.forEach((button) => {
     button.addEventListener("click", () => {
-      orderAgain(button)
+      orderAgain(button, "finish");
     });
   });
-  
+
+  newTodosDeleteButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      orderAgain(button, "delete");
+    });
+  });
 }
 
-function orderAgain(button) {
-  todos.forEach(todo=> {
-    if(todo.todoId==button.getAttribute("todoId")&&todo.finished==false){
-      todo.finished=true
-    }
-  });
+function orderAgain(button, selected) {
+  if (selected == "finish") {
+    todos.forEach((todo) => {
+      if (
+        todo.todoId == button.getAttribute("todoId") &&
+        todo.finished == false
+      ) {
+        todo.finished = true;
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+    });
+   
+  } else {
+    todos.forEach((todo) => {
+      if (todo.todoId == button.getAttribute("todoId")) {
+        const newTodo=todos.splice(todos.indexOf(todo),1)
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+    });
+    
+   
+  }
 
   orderTodos();
 }
