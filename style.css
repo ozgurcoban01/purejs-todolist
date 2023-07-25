@@ -40,14 +40,15 @@ body {
 }
 
 .main-container {
-  min-height: 700px;
-  min-width: 400px;
+  
+  width: 400px;
   margin: 10vh 0;
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: start;
   flex-direction: column;
+  max-width: 80vw;
 }
 
 .add-todo {
